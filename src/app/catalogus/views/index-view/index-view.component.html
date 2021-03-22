@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <a href="#">
+      <img
+        width="100%"
+        src="https://s.s-bol.com/nl/upload/images/ps/banners/campagne/2021/bol-daagse-maart/middelen/bol7daagse-pega_mhp-header.jpg"
+        alt="deals van webshop">
+    </a>
+  </div>
+  <h1 class="my-5">Categorien</h1>
+  <div class="row py-5">
+
+    <div class="d-flex flex-wrap justify-content-center">
+
+      <div *ngFor="let category of categories" class="mx-4">
+        <a href="#">
+          <img src="{{category.image}}" alt="{{category.name}}">
+        </a>
+        <p class="text-center">{{category.name}}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

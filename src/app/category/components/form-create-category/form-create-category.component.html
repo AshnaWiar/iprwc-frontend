@@ -1,0 +1,43 @@
+<form #createCategoryForm="ngForm" (ngSubmit)="onFormSubmit(createCategoryForm)">
+
+  <div class="form-group">
+    <label for="image">Afbeelding</label>
+    <input
+      [(ngModel)]="category.image"
+      [class.is-invalid]="createCategoryForm.submitted && image.invalid"
+      #image="ngModel"
+      id="image"
+      type="text"
+      class="form-control"
+      name="image"
+      required
+      maxlength="255"
+    >
+    <div *ngIf="createCategoryForm.submitted">
+      <small class="text-danger" *ngIf="image.errors?.required">Afbeelding is required</small>
+      <small class="text-danger" *ngIf="image.errors?.pattern">Afbeelding is invalid</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Naam</label>
+    <input
+      [(ngModel)]="category.name"
+      [class.is-invalid]="createCategoryForm.submitted && name.invalid"
+      #name="ngModel"
+      id="name"
+      type="text"
+      class="form-control"
+      name="name"
+      required
+      maxlength="255"
+    >
+    <div *ngIf="createCategoryForm.submitted">
+      <small class="text-danger" *ngIf="name.errors?.required">Naam is required</small>
+      <small class="text-danger" *ngIf="name.errors?.pattern">Naam is invalid</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <ng-content></ng-content>
+</form>

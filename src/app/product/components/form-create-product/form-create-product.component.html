@@ -1,0 +1,139 @@
+
+<form #createProductForm="ngForm" (ngSubmit)="onFormSubmit(createProductForm)">
+
+  <div class="form-group">
+    <label for="image">Afbeelding</label>
+    <input
+      [(ngModel)]="product.image"
+      [class.is-invalid]="createProductForm.submitted && image.invalid"
+      #image="ngModel"
+      id="image"
+      type="text"
+      class="form-control"
+      name="image"
+      required
+      maxlength="255"
+    >
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="image.errors?.required">Afbeelding is required</small>
+      <small class="text-danger" *ngIf="image.errors?.maxLength">Afbeelding bevat meer dan 255 karakters</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Merk</label>
+    <input
+      [(ngModel)]="product.brand"
+      [class.is-invalid]="createProductForm.submitted && brand.invalid"
+      #brand="ngModel"
+      id="brand"
+      type="text"
+      class="form-control"
+      name="brand"
+      required
+      maxlength="255"
+    >
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="brand.errors?.required">Merk is required</small>
+      <small class="text-danger" *ngIf="brand.errors?.pattern">Merk bevat meer dan 255 karakters</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Titel</label>
+    <input
+      [(ngModel)]="product.title"
+      [class.is-invalid]="createProductForm.submitted && title.invalid"
+      #title="ngModel"
+      id="title"
+      type="text"
+      class="form-control"
+      name="title"
+      required
+      maxlength="255"
+    >
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="title.errors?.required">Titel is een verplicht veld</small>
+      <small class="text-danger" *ngIf="title.errors?.maxLength">Titel bevat meer dan 255 karakters</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Omschrijving - kort</label>
+    <textarea
+      [(ngModel)]="product.descriptionShort"
+      [class.is-invalid]="createProductForm.submitted && descriptionShort.invalid"
+      #descriptionShort="ngModel"
+      id="name"
+      type="text"
+      class="form-control"
+      name="descriptionShort"
+      required
+      maxlength="255"
+    ></textarea>
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="descriptionShort.errors?.required">'Omschrijving - kort' is een verplicht veld</small>
+      <small class="text-danger" *ngIf="descriptionShort.errors?.maxLength">'Omschrijving - kort' bevat meer dan 255 karakters</small>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Omschrijving</label>
+    <textarea
+      [(ngModel)]="product.description"
+      [class.is-invalid]="createProductForm.submitted && description.invalid"
+      #description="ngModel"
+      id="description"
+      type="text"
+      class="form-control"
+      name="description"
+      required
+      maxlength="255"
+    ></textarea>
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="description.errors?.required">Omschrijving is een verplicht veld</small>
+      <small class="text-danger" *ngIf="description.errors?.maxLength">'Omschrijving' bevat meer dan 255 karakters</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Prijs</label>
+    <input
+      [(ngModel)]="product.price"
+      [class.is-invalid]="createProductForm.submitted && price.invalid"
+      #price="ngModel"
+      id="price"
+      type="number"
+      class="form-control"
+      name="price"
+      required
+    >
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="price.errors?.required">Prijs is required</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="spec">Spec</label>
+    <input
+      [(ngModel)]="product.spec"
+      [class.is-invalid]="createProductForm.submitted && spec.invalid"
+      #spec="ngModel"
+      id="spec"
+      type="text"
+      class="form-control"
+      name="spec"
+      required
+      maxlength="255"
+    >
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="spec.errors?.required">Spec is een verplicht veld</small>
+      <small class="text-danger" *ngIf="spec.errors?.maxLength">spec bevat meer dan 255 karakters</small>
+
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <ng-content></ng-content>
+</form>

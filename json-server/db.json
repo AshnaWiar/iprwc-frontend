@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "test@test.com",
+      "orders": [
+        {
+          "id": 1,
+          "Test": "test1"
+        }
+      ]
+    }
+  ],
+  "product": [],
+  "categories": [
+    {
+      "id": 7,
+      "image": "abc2",
+      "name": "abc222"
+    }
+  ]
+}
