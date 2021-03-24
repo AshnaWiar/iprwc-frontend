@@ -41,4 +41,8 @@ export interface ShoppingCartInterface {
    */
   getTotalAmountItems(): number;
 
+  /**
+   * Update cartItem amount
+   */
+  updateAmount(item: ShoppingCartItemInterface, amount: number): void;
 }

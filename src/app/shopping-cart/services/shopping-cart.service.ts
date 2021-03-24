@@ -33,6 +33,13 @@ export class ShoppingCartService {
     this.storeShoppingCart(cart);
   }
 
+
+  updateAmount(item: ShoppingCartItemInterface, amount: number): void {
+    const cart = this.getShoppingCart();
+    cart.updateAmount(item, amount);
+    this.storeShoppingCart(cart);
+  }
+
   onChange(callback: (shoppingCart: ShoppingCartInterface) => void): Subscription {
     return this.shoppingCartEventEmitter.subscribe(callback);
   }

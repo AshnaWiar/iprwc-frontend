@@ -109,4 +109,12 @@ export class ShoppingCart implements ShoppingCartInterface {
     return this.getCartItems().length > 0;
   }
 
+  updateAmount(item: ShoppingCartItemInterface, amount: number): void {
+    const cartItem = this.getItemFromCart(item);
+
+    if (cartItem !== undefined) {
+      cartItem.amount = amount;
+    }
+  }
+
 }

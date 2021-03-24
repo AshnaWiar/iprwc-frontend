@@ -14,42 +14,25 @@
 
         <div class="product_title font-weight-bold my-2">
           {{product.title}}
-        </div>
 
-        <div class="product_sub_description">
+        </div>
+        <small class="text-wrap w-25">{{product.spec}}</small>
+        <div class="product_sub_description font-italic mt-3">
           {{product.descriptionShort}}
-          De meest complete mini beamer in zijn klasse! | Met Android en Apple AirPlay | Bluetooth - Wi-Fi - USB | Ingebouwde accu met 4 uur speeltijd |
         </div>
-        <ul class="product-small-specs" data-test="product-specs">
-          <li>
-            <span>200 ANSI-lumen</span>
-          </li>
-          <li>
-            <span>854 x 480</span>
-          </li>
-          <li>
-            <span>DLP</span>
-          </li>
-          <li>
-            <span>1500:1</span>
-          </li>
-        </ul>
 
-        <div class="rating"></div>
-
-        <div class="product_description">
+        <div class="product_description mt-2">
           {{product.description}}
-          De Anker Nebula Apollo II is de vernieuwde versie van de allereerste Nebula Capsule. De mini beamer met…
         </div>
       </div>
 
       <div class="col-3">
-        <div class="price">
-          {{product.price}}
+        <div class="price font-weight-bold">
+          Prijs: {{product.price | currency}}
           <span>-</span>
         </div>
         <div class="add_to_cart">
-          <button class="btn b" (click)="onAddToCartButtonClick(product)">Toevoegn aan winkelwagen</button>
+          <button class="btn btn-primary btn-sm" (click)="onAddToCartButtonClick(product)">Toevoegn aan winkelwagen</button>
         </div>
       </div>
     </div>

@@ -83,4 +83,12 @@ export class CartViewComponent implements OnInit, OnDestroy {
     this.shoppingCartService.clear();
     this.router.navigate(['/order-placed']);
   }
+
+  clearCart(): void {
+    this.shoppingCartService.clear();
+  }
+
+  updateCartItemAmount(item: ShoppingCartItemInterface): void {
+    this.shoppingCartService.updateAmount(item, item.amount);
+  }
 }

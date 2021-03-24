@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>Winkelwagen</h1>
+  <h1 class="mb-3">Winkelwagen</h1>
+  <div *ngIf="shoppingCart.getCartItems().length >= 1" class="d-flex justify-content-end">
+    <button class="btn btn-outline-warning my-3 " (click)="clearCart()">Winkelwagen legen</button>
+  </div>
   <div class="card px-3" *ngIf="shoppingCart.getCartItems().length >= 1; else hasNoItems">
     <table class="table table-striped">
       <thead>
@@ -16,7 +19,7 @@
         <th scope="row"></th>
         <th>{{ item.title }}</th>
         <td>{{ item.description }}</td>
-        <td>{{ item.amount }}</td>
+        <td><input type="number" [(ngModel)]="item.amount"  (change)="updateCartItemAmount(item)" class="form-control form-control-sm"></td>
         <td>{{ item.price }}</td>
       </tr>
       <tr>
@@ -28,7 +31,7 @@
       </tr>
       <tr class="border-0">
         <td colspan="5" class="">
-          <button class="btn btn-success btn float-right" (click)="finishOrder()">Verder naar bestellen</button>
+          <button class="btn btn-primary btn float-right" (click)="finishOrder()">Verder naar bestellen</button>
         </td>
       </tr>
       </tbody>
