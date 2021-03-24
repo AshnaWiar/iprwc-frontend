@@ -12,7 +12,7 @@ export class CategoryService {
   private readonly endpoint: string;
 
   constructor(private api: ApiService) {
-    this.endpoint = environment.endpoints.CATEGORY;
+    this.endpoint = environment.endpoints.category;
   }
 
   getAll(): Observable<Array<CategoryInterface>> {
@@ -23,16 +23,19 @@ export class CategoryService {
     return this.api.get(this.endpoint + id);
   }
 
+  getProductsWithCategory(categoryId: string): Observable<ProductInterface> {
+    return this.api.get(`${this.endpoint}/${categoryId}/products`);
+  }
+
   store(category: CategoryInterface): Observable<object> {
     return this.api.post(this.endpoint, category);
   }
 
   put(category: CategoryInterface): Observable<object> {
-    return this.api.put(`${this.endpoint}/${category.id}`, category);
+    return this.api.put(this.endpoint, category);
   }
 
   delete(id: string): Observable<object> {
     return this.api.delete(`${this.endpoint}/${id}`);
   }
-
 }

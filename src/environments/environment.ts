@@ -5,11 +5,17 @@
 export const environment = {
   production: false,
   endpoints: {
-    AUTHENTICATION: 'authenticate',
-    API: 'http://localhost:8080/',
-    CATEGORY: 'category',
-    PRODUCT: 'product',
-    USERS: 'users',
+    authentication: 'authenticate',
+    api: 'http://localhost:8080/',
+    category: 'category',
+    product: 'product',
+    account: 'account',
+    order: 'order',
+
+  },
+  localstorageKeys: {
+    shoppingCart: 'cart',
+    user: 'user',
   }
 };
 

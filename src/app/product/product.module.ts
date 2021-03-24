@@ -5,22 +5,25 @@ import {TableIndexProductsComponent} from './components/table-index-products/tab
 import {FormCreateProductComponent} from './components/form-create-product/form-create-product.component';
 import {CreateProductViewComponent} from './views/create-product-view/create-product-view.component';
 import {EditProductViewComponent} from './views/edit-product-view/edit-product-view.component';
-import {ListProductViewComponent} from './views/list-product-view/list-product-view.component';
+import {ProductListViewComponent} from './views/list-product-view/product-list-view.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
+import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
 
 
 @NgModule({
   declarations: [
     TableIndexProductsComponent,
     FormCreateProductComponent,
-    CreateProductViewComponent,
     EditProductViewComponent,
-    ListProductViewComponent
+    CreateProductViewComponent,
+    ProductListViewComponent,
+    ProductListItemComponent
   ],
   exports: [
     CreateProductViewComponent,
-    ListProductViewComponent
+    ProductListViewComponent,
+    ProductListItemComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,33 @@
+<ng-template [ngIf]="isCreatePage()">
+  <h1 class="mb-3">Accounten Toevoegen</h1>
+
+  <app-form-create-account (createAccountRequest)="createAccount($event)" [account]="getNewAccount()"
+                           [isEditMode]="true">
+    <a class="action-back btn btn-outline-primary ml-3" (click)="showListView()">Terug</a>
+  </app-form-create-account>
+
+</ng-template>
+
+
+<ng-template [ngIf]="isEditPage()">
+  <h1 class="mb-3">Accounten wijzigen</h1>
+  <app-form-create-account (createAccountRequest)="updateAccount($event)" [account]="editableAccount"
+                           [isEditMode]="true">
+    <a class="action-back btn btn-outline-primary ml-3" (click)="showListView()">Terug</a>
+  </app-form-create-account>
+</ng-template>
+
+
+<ng-template [ngIf]="isListPage()">
+
+  <h1>Accounten</h1>
+
+  <app-resource-index-table
+    (onDeleteResource)="deleteAccount($event)"
+    (onEditResource)="showEditPage($event)"
+    (onAddResource)="showCreateView()"
+    [resource]="accountIndexTable">
+  </app-resource-index-table>
+
+</ng-template>
+

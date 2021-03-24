@@ -1,4 +1,3 @@
-
 <form #createProductForm="ngForm" (ngSubmit)="onFormSubmit(createProductForm)">
 
   <div class="form-group">
@@ -17,6 +16,26 @@
     <div *ngIf="createProductForm.submitted">
       <small class="text-danger" *ngIf="image.errors?.required">Afbeelding is required</small>
       <small class="text-danger" *ngIf="image.errors?.maxLength">Afbeelding bevat meer dan 255 karakters</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select
+      [(ngModel)]="product.category"
+      [class.is-invalid]="createProductForm.submitted && category.invalid"
+      #category="ngModel"
+      id="category"
+      type="text"
+      class="form-control"
+      name="brand"
+      required
+    >
+      <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+    </select>
+    <div *ngIf="createProductForm.submitted">
+      <small class="text-danger" *ngIf="category.errors?.required">Category is required</small>
+      <small class="text-danger" *ngIf="category.errors?.pattern">Merk bevat meer dan 255 karakters</small>
     </div>
   </div>
 
@@ -69,11 +88,12 @@
       class="form-control"
       name="descriptionShort"
       required
-      maxlength="255"
     ></textarea>
     <div *ngIf="createProductForm.submitted">
-      <small class="text-danger" *ngIf="descriptionShort.errors?.required">'Omschrijving - kort' is een verplicht veld</small>
-      <small class="text-danger" *ngIf="descriptionShort.errors?.maxLength">'Omschrijving - kort' bevat meer dan 255 karakters</small>
+      <small class="text-danger" *ngIf="descriptionShort.errors?.required">'Omschrijving - kort' is een verplicht
+        veld</small>
+      <small class="text-danger" *ngIf="descriptionShort.errors?.maxLength">'Omschrijving - kort' bevat meer dan 255
+        karakters</small>
 
     </div>
   </div>
@@ -89,11 +109,11 @@
       class="form-control"
       name="description"
       required
-      maxlength="255"
     ></textarea>
     <div *ngIf="createProductForm.submitted">
       <small class="text-danger" *ngIf="description.errors?.required">Omschrijving is een verplicht veld</small>
-      <small class="text-danger" *ngIf="description.errors?.maxLength">'Omschrijving' bevat meer dan 255 karakters</small>
+      <small class="text-danger" *ngIf="description.errors?.maxLength">'Omschrijving' bevat meer dan 255
+        karakters</small>
     </div>
   </div>
 

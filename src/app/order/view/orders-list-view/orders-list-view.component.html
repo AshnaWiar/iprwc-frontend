@@ -1,0 +1,30 @@
+<h1>Mijn bestellingen</h1>
+
+<div class="container-fluid p-0 mt-5">
+
+  <div class="order-wrapper mt-4" *ngFor="let order of orders">
+    <p class="text-muted">{{ order.created_at | date: 'd MMMM yyy' }} | bestelnummer {{ orderNumber(order) }}</p>
+    <div class="order-item card" (click)="showOrder(order)">
+
+      <div class="card-body row" *ngFor="let orderItem of order.orderItems">
+        <div class="col-2">
+          <img src="{{orderItem.product.image}}">
+        </div>
+
+        <div class="col">
+          <div class="orderItem-description">
+            <p class="font-weight-bold m-0 p-0">{{orderItem.product.title}}</p>
+            <small class="m-0 text-muted">
+              <span class="font-weight-bold px-2 text-green"  *ngIf="order.status !== 'CREATED'">
+                {{ orderStatus(order) }}
+              </span>
+              Amount: {{orderItem.amount}} | price: {{ orderItem.price | currency:'EUR'}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p *ngIf="orders.length <= 0">Je hebt nog niks besteld</p>
+
+</div>

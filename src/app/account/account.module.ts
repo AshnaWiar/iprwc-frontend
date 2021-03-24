@@ -4,38 +4,40 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {SharedModule} from '../shared/shared.module';
 
-import {FormLoginComponent} from './components/form-login/form-login.component';
-import {LoginComponent} from './views/login/login.component';
-import {RegisterComponent} from './views/register/register.component';
-import {ProfileComponent} from './views/profile/profile.component';
-import {FormRegisterComponent} from './components/form-register/form-register.component';
-import {OverviewAccountComponent} from './components/overview-account/overview-account.component';
-import {ProductModule} from '../product/product.module';
+import {FormCreateAccountComponent} from './components/form-create-account/form-create-account.component';
+import {ProfileViewComponent} from './views/profile/profile-view.component';
+
+import {AccountRoutingModule} from './account-routing.module';
 import {CategoryModule} from '../category/category.module';
-import {ListAccountsViewComponent} from './views/list-accounts-view/list-accounts-view.component';
+import {ProductModule} from '../product/product.module';
+import {OrderModule} from '../order/order.module';
+import {AccountEditViewComponent} from './views/account-edit-view/account-edit-view.component';
+import {SharedModule} from '../shared/shared.module';
+import {AccountsListViewComponent} from './views/accounts-list-view/accounts-list-view.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    RegisterComponent,
-    ProfileComponent,
-    FormLoginComponent,
-    FormRegisterComponent,
-    OverviewAccountComponent,
-    ListAccountsViewComponent,
+    ProfileViewComponent,
+    FormCreateAccountComponent,
+    AccountEditViewComponent,
+    AccountsListViewComponent
   ],
   imports: [
     CommonModule,
+    AccountRoutingModule,
     RouterModule,
     FormsModule,
     NgbNavModule,
-    SharedModule,
-    ProductModule,
     CategoryModule,
+    ProductModule,
+    OrderModule,
+    SharedModule,
   ],
+  exports: [
+    FormCreateAccountComponent
+  ]
 })
 export class AccountModule {
 }

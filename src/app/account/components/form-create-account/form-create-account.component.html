@@ -1,0 +1,213 @@
+<form #createAccountForm="ngForm" (ngSubmit)="onFormSubmit(createAccountForm)">
+
+  <div class="form-row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="firstName">Voornaam</label>
+        <input
+          [(ngModel)]="account.firstName"
+          [class.is-invalid]="createAccountForm.submitted && firstName.invalid"
+          #firstName="ngModel"
+          id="firstName"
+          type="text"
+          class="form-control"
+          name="firstName"
+          required
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="firstName.errors?.required">Voornaam is required</small>
+          <small class="text-danger" *ngIf="firstName.errors?.maxLength">Voornaam bevat meer dan 255 karakters</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="lastName">Achternaam</label>
+        <input
+          [(ngModel)]="account.lastName"
+          [class.is-invalid]="createAccountForm.submitted && lastName.invalid"
+          #lastName="ngModel"
+          id="lastName"
+          type="text"
+          class="form-control"
+          name="lastName"
+          required
+          maxlength="255"
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="lastName.errors?.required">Achternaam is required</small>
+          <small class="text-danger" *ngIf="lastName.errors?.maxLength">Achternaam bevat meer dan 255 karakters</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-5">
+      <div class="form-group">
+        <label for="streetName">Straatnaam</label>
+        <input
+          [(ngModel)]="account.streetName"
+          [class.is-invalid]="createAccountForm.submitted && streetName.invalid"
+          #streetName="ngModel"
+          id="streetName"
+          type="text"
+          class="form-control"
+          name="streetName"
+          required
+          maxlength="255"
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="streetName.errors?.required">Afbeelding is required</small>
+          <small class="text-danger" *ngIf="streetName.errors?.maxLength">Afbeelding bevat meer dan 255
+            karakters</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="houseNumber">Huisnummer</label>
+        <input
+          [(ngModel)]="account.houseNumber"
+          [class.is-invalid]="createAccountForm.submitted && houseNumber.invalid"
+          #houseNumber="ngModel"
+          id="houseNumber"
+          type="text"
+          class="form-control"
+          name="houseNumber"
+          required
+          maxlength="255"
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="houseNumber.errors?.required">Huisnummer is required</small>
+          <small class="text-danger" *ngIf="houseNumber.errors?.maxLength">Huisnummer bevat meer dan 255
+            karakters</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label for="postalCode">Postcode</label>
+        <input
+          [(ngModel)]="account.postalCode"
+          [class.is-invalid]="createAccountForm.submitted && postalCode.invalid"
+          #postalCode="ngModel"
+          id="postalCode"
+          type="text"
+          class="form-control"
+          name="postalCode"
+          required
+          maxlength="255"
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="postalCode.errors?.required">Postcode is required</small>
+          <small class="text-danger" *ngIf="postalCode.errors?.maxLength">Postcode bevat meer dan 255 karakters</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <div class="form-group">
+        <label for="city">Stad</label>
+        <input
+          [(ngModel)]="account.city"
+          [class.is-invalid]="createAccountForm.submitted && city.invalid"
+          #city="ngModel"
+          id="city"
+          type="text"
+          class="form-control"
+          name="city"
+          required
+          maxlength="255"
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="city.errors?.required">Afbeelding is required</small>
+          <small class="text-danger" *ngIf="city.errors?.maxLength">Afbeelding bevat meer dan 255 karakters</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <div class="form-group">
+        <label for="username">Gebruikersnaam</label>
+        <input
+          [(ngModel)]="account.username"
+          [class.is-invalid]="createAccountForm.submitted && username.invalid"
+          #username="ngModel"
+          id="username"
+          type="text"
+          class="form-control"
+          name="username"
+          required
+          maxlength="255"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="username.errors?.required">Gebruikersnaam is required</small>
+          <small class="text-danger" *ngIf="username.errors?.pattern">Gebruikersnaam is een ongeldige email</small>
+          <small class="text-danger" *ngIf="username.errors?.maxLength">Gebruikersnaam bevat meer dan 255
+            karakters</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <div class="form-group">
+        <label for="password">wachtwoord</label>
+        <input
+          [(ngModel)]="account.password"
+          [class.is-invalid]="createAccountForm.submitted && password.invalid"
+          #password="ngModel"
+          id="password"
+          type="password"
+          class="form-control"
+          name="password"
+          [required]="isEditMode === false"
+          maxlength="255"
+        >
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="password.errors?.required">wachtwoord is required</small>
+          <small class="text-danger" *ngIf="password.errors?.maxLength">wachtwoord bevat meer dan 255 karakters</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" *ngIf="isEditMode">
+    <div class="col">
+      <div class="form-group">
+        <label for="role">Gebruiker Recht</label>
+        <select
+          [(ngModel)]="account.role"
+          [class.is-invalid]="createAccountForm.submitted && role.invalid"
+          #role="ngModel"
+          id="role"
+          type="password"
+          class="form-control"
+          name="role"
+          required
+          maxlength="255"
+        >
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+        </select>
+        <div *ngIf="createAccountForm.submitted">
+          <small class="text-danger" *ngIf="role.errors?.required">wachtwoord is required</small>
+          <small class="text-danger" *ngIf="role.errors?.maxLength">wachtwoord bevat meer dan 255 karakters</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-content select=".form-row"></ng-content>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <ng-content></ng-content>
+</form>

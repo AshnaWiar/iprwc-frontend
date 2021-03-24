@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {ProductInterface} from '../../interfaces/product-interface';
 import {Product} from '../../models/product';
+import {CategoryInterface} from '../../../category/interfaces/category-interface';
 
 @Component({
   selector: 'app-form-create-product',
@@ -11,6 +12,7 @@ import {Product} from '../../models/product';
 export class FormCreateProductComponent implements OnInit {
 
   @Input() product: ProductInterface = new Product();
+  @Input() categories: CategoryInterface[] = [];
   @Output() createProductRequest: EventEmitter<ProductInterface>;
 
   constructor() {
@@ -26,7 +28,7 @@ export class FormCreateProductComponent implements OnInit {
     if (createProductForm.invalid) {
       return;
     }
-
+    console.log(this.product);
     this.createProductRequest.emit(this.product);
   }
 

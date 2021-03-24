@@ -14,7 +14,7 @@ export class ProductService {
   constructor(
     public api: ApiService
   ) {
-    this.endpoint = environment.endpoints.PRODUCT;
+    this.endpoint = environment.endpoints.product;
   }
 
   getAll(): Observable<Array<ProductInterface>> {
@@ -30,7 +30,7 @@ export class ProductService {
   }
 
   put(product: ProductInterface): Observable<object> {
-    return this.api.put(`${this.endpoint}/${product.id}`, product);
+    return this.api.put(`${this.endpoint}`, product);
   }
 
   delete(id: string): Observable<object> {

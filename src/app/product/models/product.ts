@@ -1,4 +1,5 @@
 import {ProductInterface} from '../interfaces/product-interface';
+import {Category} from '../../category/models/category';
 
 export class Product implements ProductInterface {
 
@@ -10,6 +11,7 @@ export class Product implements ProductInterface {
   spec: string;
   title: string;
   id: string;
+  category: Category;
 
 
   constructor() {
@@ -21,5 +23,6 @@ export class Product implements ProductInterface {
     this.spec = '';
     this.title = '';
     this.id = '';
+    this.category = new Category();
   }
 }

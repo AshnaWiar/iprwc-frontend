@@ -11,7 +11,7 @@ export class ApiService {
   endpoint: string;
 
   constructor(private httpClient: HttpClient) {
-    this.endpoint = environment.endpoints.API;
+    this.endpoint = environment.endpoints.api;
   }
 
   get<T>(path: string): Observable<T> {
